@@ -2,7 +2,8 @@ import csv
 import requests
 from bs4 import BeautifulSoup
 import re
-import io 
+import io
+
 
 def scrapeData(url):
     numeric_const_pattern = '[-+]? (?: (?: \d* \. \d+ ) | (?: \d+ \.? ) )(?: [Ee] [+-]? \d+ ) ?'
@@ -14,16 +15,18 @@ def scrapeData(url):
 
     with io.open('output.csv', 'w', encoding='utf-8') as csvFile:
         writer = csv.writer(csvFile)
-        for table in tables: 
+        for table in tables:
             rows = table.select('tr')
             print(rows)
             for row in rows:
                 cells = row.select('td')
-                nonEmptyCells = [c for c in cells if c]
-                data = map(lambda c: c.string, nonEmptyCells)
-                writer.writerow(data)
+                nonEmptyCells = [
+                    c for c in cells if c.string and c.string.strip()]
+                data = list(map(lambda c: c.string, nonEmptyCells))
+                if(len(data)):
+                    writer.writerow(data)
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     url = "https://www.sec.gov/Archives/edgar/data/1553195/000092595020000006/cbf_ncsrs.htm"
     scrapeData(url)
