@@ -15,10 +15,8 @@ def scrapeData(url):
     with io.open('output.csv', 'w', encoding='utf-8') as csvFile:
         writer = csv.writer(csvFile)
         for table in tables: 
-            if not table.find('tr > td', text=re.compile('Principle')):
-                print('test')
             rows = table.select('tr')
-            # print(rows)
+            print(rows)
             for row in rows:
                 cells = row.select('td')
                 nonEmptyCells = [c for c in cells if c]
