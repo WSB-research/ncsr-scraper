@@ -1,0 +1,25 @@
+{
+  "name": "ncsr-scraper",
+  "version": "1.0.0",
+  "description": "Python scraper for extracting holdings data from corporate bond fund NCSR forms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WSB-research/ncsr-scraper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WSB-research/ncsr-scraper/issues"
+  },
+  "homepage": "https://github.com/WSB-research/ncsr-scraper#readme",
+  "dependencies": {
+    "jsdom": "^16.2.1",
+    "request": "^2.88.2",
+    "sanitize-html": "^1.22.1"
+  }
+}
